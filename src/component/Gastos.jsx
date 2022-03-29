@@ -1,14 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import  { ReactComponent as Undo} from '../img/undo.svg'
+import Btn from '../element/Btn'
 
 const Gastos = () => {
   return (
     <>
     <div>Gastos</div>
-    <Link to="/">
- <button><Undo/></button>
-    </Link>
+    <Btn/>
     </>
   )
 }
