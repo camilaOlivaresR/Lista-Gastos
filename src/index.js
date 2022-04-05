@@ -11,6 +11,7 @@ import Editar from './component/Editar';
 import { Helmet } from "react-helmet";
 import logo from './img/logo.svg';
 import { AuthProvider } from './Context';
+import RutaPrivada from './component/RutaPrivada';
 
 const Index = () => {
   return (
@@ -23,10 +24,26 @@ const Index = () => {
           <Routes>
             <Route path='/inicioSesion' element={<InicioSesion />} />
             <Route path='/registro' element={<Registro />} />
-            <Route path='/gastos' element={<Gastos />} />
-            <Route path='/listaGastos' element={<ListaGastos />} />
-            <Route path='/editar/:id' element={<Editar />} />
-            <Route path='/' element={<App />} />
+            <Route path='/gastos' element={
+              <RutaPrivada >
+                <Gastos />
+              </RutaPrivada>
+            } />
+            <Route path='/listaGastos' element={
+              <RutaPrivada>
+                <ListaGastos />
+              </RutaPrivada>} />
+            <Route path='/editar/:id' element={
+              <RutaPrivada >
+                <Editar />
+              </RutaPrivada>
+            } />
+            <Route path='/' element={
+              <RutaPrivada>
+                <App />
+              </RutaPrivada>
+            } />
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>
