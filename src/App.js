@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Link } from 'react-router-dom'
+import BtnCerrarSesion from './component/BtnCerrarSesion'
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
        <Link to="/listaGastos ">
       <button>Lista de Gastos</button>
       </Link>
-     
+      <BtnCerrarSesion/>
       </div>
     </>
   )

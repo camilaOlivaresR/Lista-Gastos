@@ -1,9 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import  { ReactComponent as Undo} from '../img/undo.svg'
 
+
+
 const ListaGastos = () => {
-  return (
+
+ 
+return (
     <>
     <div>ListaGastos</div>
     <Link to="/">
