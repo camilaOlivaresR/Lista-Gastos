@@ -37,7 +37,7 @@ const InicioSesion = () => {
     }
     try {
       await signInWithEmailAndPassword(auth, correo, clave);
-      navegate("/gastos");
+      navegate("/");
       console.log('usuario registrado')
     } catch (error) {
       let mensaje;

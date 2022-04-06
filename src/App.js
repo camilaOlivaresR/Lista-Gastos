@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link } from 'react-router-dom'
 import BtnCerrarSesion from './component/BtnCerrarSesion'
+import FormularioGasto from './component/FormularioGasto'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       </Link>
       <BtnCerrarSesion/>
       </div>
+      <FormularioGasto/>
     </>
   )
 }
