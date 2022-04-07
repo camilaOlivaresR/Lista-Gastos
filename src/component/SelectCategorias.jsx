@@ -1,5 +1,6 @@
 import { useState } from "react"
 import{ReactComponent as Down} from '../img/down.svg'
+import IconosCategoria from "../element/IconosCategoria";
 
 const SelectCategorias = ({categoria, cambiarCategoria}) => {
     const [mostrarSelect , cambiarMostrarSelect] = useState(false);
@@ -30,6 +31,7 @@ const handleClick = (e) =>{
                  data-valor={categoria.texto}
                  onClick={handleClick}
                  >
+                     <IconosCategoria id={categoria.id}/>
                      {categoria.id}
                      </div>
               })}
