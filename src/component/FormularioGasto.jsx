@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { ReactComponent as Add } from '../img/add.svg'
+import DatePicker from './DatePicker';
 import SelectCategorias from './SelectCategorias';
 
 const FormularioGasto = () => {
   const [inputDescripcion, cambiarInputDescpcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
   const [categoria, cambiarCategoria] = useState('ahorro');
+  const [fecha, cambiarFecha] = useState(new Date());
 
   const handleChange = (e) => {
     if (e.target.name === 'descripcion') {
@@ -14,6 +16,7 @@ const FormularioGasto = () => {
       cambiarInputCantidad(e.target.value.replace(/[^0-9.]/g, ''));
     }
   }
+  console.log(fecha)
 
   return (
 
@@ -25,7 +28,12 @@ const FormularioGasto = () => {
           cambiarCategoria={cambiarCategoria}
         />
       </span>
-      <span>DayPicker</span>
+      <div>
+        <DatePicker
+        fecha={fecha}
+        cambiarFecha={cambiarFecha}
+        />
+      </div>
 
       <div>
         <input
