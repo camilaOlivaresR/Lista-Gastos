@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import { ReactComponent as Add } from '../img/add.svg'
-import DatePicker from './DatePicker';
 import SelectCategorias from './SelectCategorias';
+import agregarGasto from './AgregarGastoFirebase'
+import DatePicker from './DatePicker';
+import fromUnixTime from 'date-fns/fromUnixTime';
+import getUnixTime from 'date-fns/getUnixTime';
+import { useAuth } from '../Context';
 
 const FormularioGasto = () => {
   const [inputDescripcion, cambiarInputDescpcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
   const [categoria, cambiarCategoria] = useState('ahorro');
   const [fecha, cambiarFecha] = useState(new Date());
+
+  const{usuario} = useAuth();
 
   const handleChange = (e) => {
     if (e.target.name === 'descripcion') {
@@ -18,9 +24,23 @@ const FormularioGasto = () => {
   }
   console.log(fecha)
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    let cantidad = parseFloat(inputCantidad).toFixed(0);
+
+    agregarGasto({
+      categoria: categoria,
+      descripcion: inputDescripcion,
+      cantidad: cantidad,
+      fecha: getUnixTime(fecha),
+      uidUsuario: usuario.uid,
+
+    });
+  }
+
   return (
 
-    <form>
+    <form onSubmit={handleSubmit}>
 
       <span>
         <SelectCategorias
