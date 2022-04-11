@@ -3,39 +3,56 @@ import { ReactComponent as Add } from '../img/add.svg'
 import SelectCategorias from './SelectCategorias';
 import agregarGasto from './AgregarGastoFirebase'
 import DatePicker from './DatePicker';
-import fromUnixTime from 'date-fns/fromUnixTime';
 import getUnixTime from 'date-fns/getUnixTime';
 import { useAuth } from '../Context';
 
 const FormularioGasto = () => {
-  const [inputDescripcion, cambiarInputDescpcion] = useState('');
+  const [inputDescripcion, cambiarInputDescripcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
   const [categoria, cambiarCategoria] = useState('ahorro');
   const [fecha, cambiarFecha] = useState(new Date());
 
-  const{usuario} = useAuth();
+
+  const { usuario } = useAuth();
 
   const handleChange = (e) => {
     if (e.target.name === 'descripcion') {
-      cambiarInputDescpcion(e.target.value);
+      cambiarInputDescripcion(e.target.value);
     } else if (e.target.name === 'cantidad') {
       cambiarInputCantidad(e.target.value.replace(/[^0-9.]/g, ''));
     }
   }
   console.log(fecha)
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let cantidad = parseFloat(inputCantidad).toFixed(0);
+    let cantidad = parseFloat(inputCantidad).toFixed(3);
 
-    agregarGasto({
-      categoria: categoria,
-      descripcion: inputDescripcion,
-      cantidad: cantidad,
-      fecha: getUnixTime(fecha),
-      uidUsuario: usuario.uid,
+    if (inputDescripcion !== '' && inputCantidad !== '') {
+      agregarGasto({
+        categoria: categoria,
+        descripcion: inputDescripcion,
+        cantidad: cantidad,
+        fecha: getUnixTime(fecha),
+        uidUsuario: usuario.uid,
 
-    });
+      })
+        .then(() => {
+          cambiarCategoria('Ahorro');
+          cambiarInputCantidad('');
+          cambiarInputDescripcion('');
+          cambiarFecha(new Date());
+
+          alert('Gasto Agregado');
+        })
+        .catch((error) => {
+          alert('error')
+        })
+    } else {
+      alert('rellena todos los campos')
+    }
+
+
   }
 
   return (
@@ -50,8 +67,8 @@ const FormularioGasto = () => {
       </span>
       <div>
         <DatePicker
-        fecha={fecha}
-        cambiarFecha={cambiarFecha}
+          fecha={fecha}
+          cambiarFecha={cambiarFecha}
         />
       </div>
 

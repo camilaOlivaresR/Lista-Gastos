@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Link } from 'react-router-dom'
+import BarraTotalGastado from './component/BarraTotalGastado'
 import BtnCerrarSesion from './component/BtnCerrarSesion'
 import FormularioGasto from './component/FormularioGasto'
 
@@ -23,6 +24,7 @@ const App = () => {
       <BtnCerrarSesion/>
       </div>
       <FormularioGasto/>
+      <BarraTotalGastado/>
     </>
   )
 }

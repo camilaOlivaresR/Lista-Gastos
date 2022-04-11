@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import  { ReactComponent as Undo} from '../img/undo.svg'
+import BarraTotalGastado from './BarraTotalGastado'
 
 
 
@@ -12,6 +13,7 @@ return (
     <Link to="/">
  <button><Undo/></button>
     </Link>
+    <BarraTotalGastado/>
     </>
   )
 }
