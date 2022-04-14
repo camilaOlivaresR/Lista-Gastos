@@ -2,8 +2,10 @@ import {useState, useEffect} from 'react'
 import {db} from '../firebase'
 import {useAuth} from '../Context';
 import { collection, onSnapshot, query, orderBy, where, limit } from 'firebase/firestore'
+ 
 
-const UseObtenerGasto = () => {
+//creacion de HOOks
+const useObtenerGasto = () => {
   const {usuario} = useAuth();
     const [gastos, cambiarGastos] = useState([]);
     const[ultimoGasto, cambiarUltimoGasto] = useState(null);
@@ -40,4 +42,4 @@ return unsuscribe;
     return[gastos, obtenerMasGastos, hayMasPorCargar];
 }
 
-export default UseObtenerGasto;
+export default useObtenerGasto;

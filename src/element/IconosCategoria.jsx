@@ -9,25 +9,26 @@ import {ReactComponent as Hogar} from '../img/home.svg'
 
 const IconosCategoria = ({id}) => {
   switch(id){
-      case 'comida':
+      case 'Comida':
           return <Comida/>;
-          case 'salud':
+          case 'Salud':
           return <Salud/>;
-          case 'cuentas':
+          case 'Cuentas':
           return <Cuentas/>;
-          case 'transporte':
+          case 'Transporte':
           return <Transporte/>;
-          case 'ropa':
+          case 'Ropa':
           return <Ropa/>;
-          case 'diversion':
+          case 'Diversion':
           return <Diversion/>;
-          case 'ahorro':
+          case 'Ahorro':
           return <Ahorros/>;
-          case 'hogar':
+          case 'Hogar':
           return <Hogar/>;
           default:
           break;
   }
+  
 }
 
 export default IconosCategoria

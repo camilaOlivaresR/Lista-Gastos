@@ -1,9 +1,9 @@
 
-const ConversorMoneda = (cantidad) => {
+const conversorMoneda = (cantidad) => {
   return new Intl.NumberFormat(
       'en-US',
       {style: 'currency', currency:'USD', minimumFractionDigits: 2}
   ).format(cantidad);
 }
 
-export default ConversorMoneda
+export default conversorMoneda

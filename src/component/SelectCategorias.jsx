@@ -31,8 +31,8 @@ const handleClick = (e) =>{
                  data-valor={categoria.texto}
                  onClick={handleClick}
                  >
-                     <IconosCategoria id={categoria.id}/>
-                     {categoria.id}
+                     <IconosCategoria id={categoria.texto}/>
+                     {categoria.texto}
                      </div>
               })}
              </div>
