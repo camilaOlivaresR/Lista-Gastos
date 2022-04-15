@@ -12,7 +12,7 @@ import { es } from 'date-fns/locale';
 
 
 const ListaGastos = () => {
-  const [gastos] = useObtenerGasto();
+  const [gastos, obtenerMasGastos, hayMasPorCargar] = useObtenerGasto();
   console.log(gastos);
   const formatearFecha = (fecha) => {
     return format(fromUnixTime(fecha), "dd 'de' MMMM 'de' yyyy", { locale: es });
@@ -22,7 +22,7 @@ const ListaGastos = () => {
     if (index !== 0) {
       const fechaActual = formatearFecha(gasto.fecha);
       const fechaAnterior = formatearFecha(gastos[index - 1].fecha);
-     
+
       if (fechaActual === fechaAnterior) {
         return true;
 
@@ -68,7 +68,12 @@ const ListaGastos = () => {
             </div>
           );
         })}
-        <div><button>Cargar Más</button></div>
+
+        {hayMasPorCargar &&
+        <div>
+          <button onClick={() => obtenerMasGastos()}>Cargar Más</button>
+        </div>
+        }
         {gastos.length === 0 &&
           <span>
             <p>No Has Agregado Gastos</p>
