@@ -9,7 +9,7 @@ import { ReactComponent as Edit } from '../img/edit.svg'
 import { ReactComponent as Add } from '../img/add.svg'
 import { format, fromUnixTime } from 'date-fns';
 import { es } from 'date-fns/locale';
-
+import { borrarGasto } from './borrarGasto'
 
 const ListaGastos = () => {
   const [gastos, obtenerMasGastos, hayMasPorCargar] = useObtenerGasto();
@@ -62,7 +62,7 @@ const ListaGastos = () => {
                   <Link to={`/Editar/${gasto.id}`}>
                     <button ><Edit /></button>
                   </Link>
-                  <button><Trash /></button>
+                  <button onClick={() => borrarGasto(gasto.id)}><Trash /></button>
                 </div>
               </div>
             </div>

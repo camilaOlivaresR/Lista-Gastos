@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ReactComponent as Add } from '../img/add.svg'
 import SelectCategorias from './SelectCategorias';
-import agregarGasto from './AgregarGastoFirebase'
+import agregarGasto from './agregarGastoFirebase'
 import DatePicker from './DatePicker';
 import getUnixTime from 'date-fns/getUnixTime';
 import { useAuth } from '../Context';
@@ -9,7 +9,7 @@ import { useAuth } from '../Context';
 const FormularioGasto = () => {
   const [inputDescripcion, cambiarInputDescripcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
-  const [categoria, cambiarCategoria] = useState('ahorro');
+  const [categoria, cambiarCategoria] = useState('Ahorro');
   const [fecha, cambiarFecha] = useState(new Date());
 
 
