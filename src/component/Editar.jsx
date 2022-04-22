@@ -18,8 +18,8 @@ const Editar = () => {
     <header>
     <div>Editar Gasto</div>
     </header>
-    <Btn/>
-    <FormularioGasto/>
+    <Btn ruta='/listaGastos' />
+    <FormularioGasto gasto={gasto}/>
     <BarraTotalGastado/>
 
     </>

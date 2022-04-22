@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { ReactComponent as Add } from '../img/add.svg'
 import SelectCategorias from './SelectCategorias';
 import agregarGasto from './agregarGastoFirebase'
 import DatePicker from './DatePicker';
 import getUnixTime from 'date-fns/getUnixTime';
 import { useAuth } from '../Context';
+import { fromUnixTime } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
+import editarGasto from './editarGastoFirebase';
 
-const FormularioGasto = () => {
+const FormularioGasto = ({gasto}) => {
+
   const [inputDescripcion, cambiarInputDescripcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
   const [categoria, cambiarCategoria] = useState('Ahorro');
@@ -14,6 +18,23 @@ const FormularioGasto = () => {
 
 
   const { usuario } = useAuth();
+  const navigate = useNavigate();
+
+useEffect(()=> {
+  //comprobar si hay gastos
+  if(gasto){
+
+    //comprobar que el gasto es del usuario actaual,uid
+if(gasto.data().uidUsuario === usuario.uid){
+      cambiarCategoria(gasto.data().categoria);
+      cambiarFecha(fromUnixTime(gasto.data().fecha));
+      cambiarInputDescripcion(gasto.data().descripcion);
+      cambiarInputCantidad(gasto.data().cantidad);
+} else {
+   navigate('/listaGastos');
+}
+  }
+}, [gasto, usuario, navigate]);
 
   const handleChange = (e) => {
     if (e.target.name === 'descripcion') {
@@ -29,25 +50,43 @@ const FormularioGasto = () => {
     let cantidad = parseFloat(inputCantidad).toFixed(3);
 
     if (inputDescripcion !== '' && inputCantidad !== '') {
-      agregarGasto({
-        categoria: categoria,
-        descripcion: inputDescripcion,
-        cantidad: cantidad,
-        fecha: getUnixTime(fecha),
-        uidUsuario: usuario.uid,
 
-      })
-        .then(() => {
-          cambiarCategoria('Ahorro');
-          cambiarInputCantidad('');
-          cambiarInputDescripcion('');
-          cambiarFecha(new Date());
+    if(cantidad){
+      if(gasto){
+       editarGasto({
+         id: gasto.id,
+         categoria: categoria,
+          descripcion: inputDescripcion,
+          cantidad: cantidad,
+          fecha: getUnixTime(fecha),
+       }).then(() => {
+         navigate('/listaGastos');
+       }).catch((error) => {
+        console.log(error);
+       })
+      }else {
+        agregarGasto({
+          categoria: categoria,
+          descripcion: inputDescripcion,
+          cantidad: cantidad,
+          fecha: getUnixTime(fecha),
+          uidUsuario: usuario.uid,
+  
+        })
+          .then(() => {
+            cambiarCategoria('Ahorro');
+            cambiarInputCantidad('');
+            cambiarInputDescripcion('');
+            cambiarFecha(new Date());
+  
+            alert('Gasto Agregado');
+          })
+          .catch((error) => {
+            alert('error')
+          })
+      }
+    }
 
-          alert('Gasto Agregado');
-        })
-        .catch((error) => {
-          alert('error')
-        })
     } else {
       alert('rellena todos los campos')
     }
@@ -91,7 +130,7 @@ const FormularioGasto = () => {
         />
       </div>
       <div>
-        <button type='submit'>Agregar Gasto <Add /></button>
+        <button type='submit'>{gasto ? 'Editar Gasto': 'Agregar Gasto'} <Add /></button>
       </div>
     </form>
   )
