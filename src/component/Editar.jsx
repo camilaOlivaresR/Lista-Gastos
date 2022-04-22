@@ -1,8 +1,28 @@
-import React from 'react'
+import {Helmet} from 'react-helmet';
+import Btn from '../element/Btn';
+import BarraTotalGastado from './BarraTotalGastado';
+import FormularioGasto from './FormularioGasto';
+import { useParams } from 'react-router-dom';
+import useObtenerUnGasto from '../hooks/useObtenerUnGasto';
+
+
 
 const Editar = () => {
+  const {id} = useParams();
+  const [gasto] = useObtenerUnGasto(id);
   return (
-    <div>Editar</div>
+    <>
+    <Helmet>
+      <title>Editar Gasto</title>
+    </Helmet>
+    <header>
+    <div>Editar Gasto</div>
+    </header>
+    <Btn/>
+    <FormularioGasto/>
+    <BarraTotalGastado/>
+
+    </>
   )
 }
 
