@@ -1,10 +1,13 @@
 import React from 'react'
-import ConversorMoneda from '../funciones/ConversorMoneda'
+import conversorMoneda from '../funciones/ConversorMoneda'
+import { useTotalDelMes } from '../contexto/TotalGastoMes' 
 
 const BarraTotalGastado = () => {
+  const {total} = useTotalDelMes();
+  
   return (
     <div>
-        <p>Barra Total Gastado {ConversorMoneda(0.00)}</p>
+        <p>Barra Total Gastado {conversorMoneda(total)}</p>
         </div>
     
   )

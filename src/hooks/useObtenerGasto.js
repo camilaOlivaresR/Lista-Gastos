@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {db} from '../firebase'
-import {useAuth} from '../Context';
+import { useAuth } from '../contexto/Context';
 import { collection, onSnapshot, query, orderBy, where, limit, startAfter } from 'firebase/firestore'
  
 

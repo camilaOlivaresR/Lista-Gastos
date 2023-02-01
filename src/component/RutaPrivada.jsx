@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from '../Context'
+import { useAuth } from '../contexto/Context';
 import {Navigate} from 'react-router-dom';
 
 const RutaPrivada = ({ children}) => {

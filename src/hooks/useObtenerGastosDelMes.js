@@ -1,8 +1,8 @@
 import { useState , useEffect} from "react";
-import { useAuth } from "../Context";
+import { useAuth } from "../contexto/Context";
 import { db } from "../firebase";
 import { startOfMonth, endOfMonth, getUnixTime } from "date-fns";
-import { collection, onSnapshot, query, orderBy, query, where, DocumentSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, query, orderBy, where} from "firebase/firestore";
 
 const useObtenerGastoDelMes = () => {
     const [gastos, establecerGastos] = useState([]);
@@ -44,6 +44,6 @@ useEffect(() => {
 
 
     
-    return [gastos];
+    return gastos;
 }
 export default useObtenerGastoDelMes;

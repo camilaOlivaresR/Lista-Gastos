@@ -4,7 +4,7 @@ import SelectCategorias from './SelectCategorias';
 import agregarGasto from './agregarGastoFirebase'
 import DatePicker from './DatePicker';
 import getUnixTime from 'date-fns/getUnixTime';
-import { useAuth } from '../Context';
+import { useAuth } from '../contexto/Context';
 import { fromUnixTime } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import editarGasto from './editarGastoFirebase';
@@ -121,7 +121,7 @@ if(gasto.data().uidUsuario === usuario.uid){
           onChange={handleChange}
         />
         <input
-          type="text"
+          type="number"
           name='cantidad'
           id='cantidad'
           placeholder='$0.000'

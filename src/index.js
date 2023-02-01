@@ -10,8 +10,9 @@ import Registro from './component/Registro';
 import Editar from './component/Editar';
 import { Helmet } from "react-helmet";
 import logo from './img/logo.svg';
-import { AuthProvider } from './Context';
+import { AuthProvider } from './contexto/Context';
 import RutaPrivada from './component/RutaPrivada';
+import { TotalGastadoProvider } from './contexto/TotalGastoMes'
 
 const Index = () => {
   return (
@@ -20,32 +21,35 @@ const Index = () => {
         <link rel="shortcut icon" href={logo} type='imagen/x-icon' />
       </Helmet>
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/inicioSesion' element={<InicioSesion />} />
-            <Route path='/registro' element={<Registro />} />
-            <Route path='/gastos' element={
-              <RutaPrivada >
-                <Gastos />
-              </RutaPrivada>
-            } />
-            <Route path='/listaGastos' element={
-              <RutaPrivada>
-                <ListaGastos />
-              </RutaPrivada>} />
-            <Route path='/editar/:id' element={
-              <RutaPrivada >
-                <Editar />
-              </RutaPrivada>
-            } />
-            <Route path='/' element={
-              <RutaPrivada>
-                <App />
-              </RutaPrivada>
-            } />
+       <TotalGastadoProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/inicioSesion' element={<InicioSesion />} />
+              <Route path='/registro' element={<Registro />} />
+              <Route path='/gastos' element={
+                <RutaPrivada >
+                  <Gastos />
+                </RutaPrivada>
+              } />
+              <Route path='/listaGastos' element={
+                <RutaPrivada>
+                  <ListaGastos />
+                </RutaPrivada>} />
+              <Route path='/editar/:id' element={
+                <RutaPrivada >
+                  <Editar />
+                </RutaPrivada>
+              } />
+              <Route path='/' element={
+                <RutaPrivada>
+                  <App />
+                </RutaPrivada>
+              } />
 
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+       
+          </TotalGastadoProvider>
       </AuthProvider>
     </>
   );
