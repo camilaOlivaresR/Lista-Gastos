@@ -22,18 +22,19 @@ const useObtenerGastoCategoria = () => {
             return objetoResultante;
            
         }, {
-            'Comida': 0,
-            'Cuentas ': 0,
-            'Hogar': 0,
-            'Transporte': 0,
-            'Ropa': 0,
-            'Salud ': 0,
-            'Ahorro': 0,
-            'Diversion': 0,
+            Comida: 0,
+            Salud : 0,
+            Cuentas : 0,
+            Transporte: 0,
+            Ropa: 0,
+            Diversion: 0,
+            Ahorro: 0,
+            Hogar: 0,
+           
     
         });
     
-        // console.log(sumaDeGastos)
+        console.log(sumaDeGastos)
     
         cambiarGastoPorCategoria(Object.keys(sumaDeGastos).map((elemento) => {
             return{categoria: elemento, cantidad: sumaDeGastos[elemento]}

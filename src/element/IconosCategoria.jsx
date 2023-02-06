@@ -7,7 +7,7 @@ import {ReactComponent as Diversion} from '../img/yoga.svg'
 import {ReactComponent as Ahorros} from '../img/logo.svg'
 import {ReactComponent as Hogar} from '../img/home.svg'
 
-const IconosCategoria = ({id}) => {
+export const IconosCategoria = ({id}) => {
   switch(id){
       case 'Comida':
           return <Comida/>;
@@ -31,4 +31,4 @@ const IconosCategoria = ({id}) => {
   
 }
 
-export default IconosCategoria
+export default IconosCategoria;
