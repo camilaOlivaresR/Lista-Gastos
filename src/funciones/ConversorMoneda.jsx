@@ -1,8 +1,8 @@
 
 const conversorMoneda = (cantidad) => {
   return new Intl.NumberFormat(
-      'en-US',
-      {style: 'currency', currency:'USD', minimumFractionDigits: 2}
+      'es-CL',
+      {style: 'currency', currency:'CLP', minimumFractionDigits: 2}
   ).format(cantidad);
 }
 
