@@ -7,12 +7,15 @@ import BtnCerrarSesion from './component/BtnCerrarSesion'
 import FormularioGasto from './component/FormularioGasto'
 import Header from './element/Header'
 
+
 const App = () => {
+  
   return (
     <>
     {/* <Helmet>
       <title>Agregar Gasto</title>
     </Helmet> */}
+    
     <Header></Header>
     <ContenedorBotones>
       <Link to="/gastos">

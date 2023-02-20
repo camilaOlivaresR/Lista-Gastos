@@ -18,8 +18,7 @@ const Gastos = () => {
     </div>
     <div>
       {gastoPorCategoria.map((elemento, index) => {
-        return (
-         <div key={index}>
+        return <div key={index}>
           
               <IconosCategoria id={elemento.categoria} />           
                {elemento.categoria}
@@ -28,10 +27,8 @@ const Gastos = () => {
              
             
           </div>
-
-          
-          
-      )})}
+    
+      })}
     </div>
     <BarraTotalGastado/>
     </>

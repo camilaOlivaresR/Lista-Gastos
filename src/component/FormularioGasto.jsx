@@ -10,13 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import editarGasto from './editarGastoFirebase';
 import styled from 'styled-components';
 
+
 const FormularioGasto = ({gasto}) => {
 
   const [inputDescripcion, cambiarInputDescripcion] = useState('');
   const [inputCantidad, cambiarInputCantidad] = useState('');
   const [categoria, cambiarCategoria] = useState('');
   const [fecha, cambiarFecha] = useState(new Date());
-
+  
 
   const { usuario } = useAuth();
   const navigate = useNavigate();
@@ -92,22 +93,24 @@ if(gasto.data().uidUsuario === usuario.uid){
       alert('rellena todos los campos')
     }
 
+  
 
   }
 
   return (
 
     <Formulario onSubmit={handleSubmit}>
-
-      <ContenedorFiltros>
-
-      <div>
+       <Calendar>
         <DatePicker
+       
           fecha={fecha}
           cambiarFecha={cambiarFecha}
+        
+      
         />
-      </div>
+      </Calendar>
 
+      <ContenedorFiltros>
         <SelectCategorias
           categoria={categoria}
           cambiarCategoria={cambiarCategoria}
@@ -200,4 +203,11 @@ const ContenedorBoton = styled.div`
     display: flex;
     justify-content: center;
     margin: 2.5rem 0;  /* 40px */
+`;
+const Calendar = styled.div`
+    display: flex;
+    justify-content: center;
+   
+    margin: 2.5rem 0;  /* 40px */;
+  
 `;

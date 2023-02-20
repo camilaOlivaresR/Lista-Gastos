@@ -13,10 +13,19 @@ import logo from './img/logo.svg';
 import { AuthProvider } from './contexto/Context';
 import RutaPrivada from './component/RutaPrivada';
 import { TotalGastadoProvider } from './contexto/TotalGastoMes'
+import WebFont from 'webfontloader';
+import Contenedor from './element/Container';
+
+WebFont.load({
+  google: {
+    families: ['Roboto Mono: 400,500,700', 'Noto Sans']
+  }
+});
 
 const Index = () => {
   return (
     <>
+   <Contenedor>
       <Helmet>
         <link rel="shortcut icon" href={logo} type='imagen/x-icon' />
       </Helmet>
@@ -51,6 +60,7 @@ const Index = () => {
        
           </TotalGastadoProvider>
       </AuthProvider>
+      </Contenedor>
     </>
   );
 }
