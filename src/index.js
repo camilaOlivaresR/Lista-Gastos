@@ -35,6 +35,11 @@ const Index = () => {
             <Routes>
               <Route path='/inicioSesion' element={<InicioSesion />} />
               <Route path='/registro' element={<Registro />} />
+              <Route path='/' element={
+                <RutaPrivada>
+                  <App />
+                </RutaPrivada>
+              } />
               <Route path='/gastos' element={
                 <RutaPrivada >
                   <Gastos />
@@ -49,11 +54,7 @@ const Index = () => {
                   <Editar />
                 </RutaPrivada>
               } />
-              <Route path='/' element={
-                <RutaPrivada>
-                  <App />
-                </RutaPrivada>
-              } />
+             
 
             </Routes>
           </BrowserRouter>

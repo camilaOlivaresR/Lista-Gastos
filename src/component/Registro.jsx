@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { auth } from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-
+import styled from 'styled-components';
+import Contenedor from '../element/Container';
 
 const Registro = () => {
 
@@ -50,7 +51,7 @@ const Registro = () => {
     }
     try {
       await createUserWithEmailAndPassword(auth, correo, clave);
-      navegate("/gastos");
+      navegate("/");
       console.log('usuario registrado')
     } catch (error) {
       let mensaje;
@@ -80,13 +81,10 @@ const Registro = () => {
       <Helmet>
         <title>Crear Cuenta</title>
       </Helmet>
-      <div>Registro de Usuarios</div>
+      <Contenedor>Registro de Usuarios
       <div>
-        <Link to='/inicioSesion'>
-          <button >Iniciar Sesion</button>
-        </Link>
-      </div>
-      <form onSubmit={handleSubmit}>
+      <ContenedorInicio onSubmit={handleSubmit}>
+       
         <input
           type='email'
           name='email'
@@ -113,9 +111,37 @@ const Registro = () => {
         
           <button type='submit'>Crear Cuenta</button>
         
-      </form>
+      </ContenedorInicio>
+      </div>
+
+      <div>
+        <Link to='/inicioSesion'>
+          <button >Iniciar Sesion</button>
+        </Link>
+      </div>
+      </Contenedor>
     </>
   )
 }
 
-export default Registro
+export default Registro;
+
+const ContenedorInicio = styled.form`
+   
+  display: flex;
+  flex-direction: column;
+  width: 300px;  /* Or whatever */
+  height: 950x;
+  margin: auto;
+  justify-content: space-around;
+  column-gap: 20px;
+  padding: 5px; 
+  gap: 10px;
+  gap: 10px 20px; /* row-gap column gap */
+  row-gap: 10px;
+  column-gap: 20px;
+
+
+
+
+`;

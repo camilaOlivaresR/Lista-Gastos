@@ -17,6 +17,7 @@ const App = () => {
     </Helmet> */}
     
     <Header></Header>
+    <p>Que Paaa</p>
     <ContenedorBotones>
       <Link to="/gastos">
        <button>Categorias</button>

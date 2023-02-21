@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
+import styled from 'styled-components';
+import Contenedor from '../element/Container';
 
 const InicioSesion = () => {
   const navegate = useNavigate();
@@ -64,17 +66,14 @@ const InicioSesion = () => {
 
   return (
     <>
+   
     <Helmet>
         <title>Iniciar Sesion</title>
       </Helmet>
-      <div>Iniciar Sesion</div>
+      <Contenedor>Iniciar Sesion
+     
       <div>
-        <Link to='/registro'>
-          <button >Registrarse</button>
-        </Link>
-      </div>
-    <div>
-      <form onSubmit={handleSubmit}>
+      <ContenedorInicio onSubmit={handleSubmit}>
         <input
           type='email'
           name='email'
@@ -91,10 +90,42 @@ const InicioSesion = () => {
 
         />
         <button type='submit'>Iniciar Sesion</button>
-      </form>
-    </div>
+      </ContenedorInicio>
+      </div>
+    
+
+        <div>
+        <Link to='/registro'>
+          <button >Registrarse</button>
+        </Link>
+        </div>
+     
+     </Contenedor>
     </>
   )
 }
 
 export default InicioSesion
+
+const ContenedorInicio = styled.form`
+   
+  display: flex;
+  flex-direction: column;
+  width: 300px;  /* Or whatever */
+  height: 90px;
+  margin: auto;
+  justify-content: space-around;
+
+
+
+
+`;
+
+const ContenedorRegister = styled.div`
+
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  margin: 15px;
+ 
+`;

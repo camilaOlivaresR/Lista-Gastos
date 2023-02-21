@@ -100,23 +100,6 @@ if(gasto.data().uidUsuario === usuario.uid){
   return (
 
     <Formulario onSubmit={handleSubmit}>
-       <Calendar>
-        <DatePicker
-       
-          fecha={fecha}
-          cambiarFecha={cambiarFecha}
-        
-      
-        />
-      </Calendar>
-
-      <ContenedorFiltros>
-        <SelectCategorias
-          categoria={categoria}
-          cambiarCategoria={cambiarCategoria}
-        />
-      </ContenedorFiltros>
-     
       <div>
         <Input
           type="text"
@@ -135,9 +118,25 @@ if(gasto.data().uidUsuario === usuario.uid){
           onChange={handleChange}
         />
       </div>
+      <ContenedorBotones>
       <ContenedorBoton>
         <button type='submit'>{gasto ? 'Editar Gasto': 'Agregar Gasto'} <Add /></button>
       </ContenedorBoton>
+
+      <Calendar>
+        <DatePicker
+          fecha={fecha}
+          cambiarFecha={cambiarFecha}
+        />
+      </Calendar>
+
+      <ContenedorFiltros>
+        <SelectCategorias
+          categoria={categoria}
+          cambiarCategoria={cambiarCategoria}
+        />
+      </ContenedorFiltros>
+      </ContenedorBotones>
     </Formulario>
   )
 }
@@ -210,4 +209,10 @@ const Calendar = styled.div`
    
     margin: 2.5rem 0;  /* 40px */;
   
+`;
+
+const ContenedorBotones = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
